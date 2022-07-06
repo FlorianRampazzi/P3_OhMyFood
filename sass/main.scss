@@ -1,5 +1,23 @@
 @import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/functions";
+@import "./utils/extensions";
+@import "./layout/header";
+@import "./layout/footer";
+@import "./layout/button";
 
-.nav {
-    
+
+* {
+    box-sizing: border-box; /* Opera/IE 8+ */
+    -moz-box-sizing: border-box; /* Firefox, autres Gecko */
+    -webkit-box-sizing: border-box; /* Safari/Chrome, autres WebKit */
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
 }
+html {
+    scroll-behavior: smooth;
+}
+

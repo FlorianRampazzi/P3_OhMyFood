@@ -5,7 +5,14 @@ $color-tertiary: #99E2D0;
 $color-white: #ffffff;
 $color-lightgrey: #f6f6f6;
 $color-grey: #eaeaea;
+$color-shadow: rgba(32, 32, 32, 0.068);
 
 //FONT SIZE
 $tittle-size:1.2em;
 $font-size:0.55em;
+
+//MAPS
+$shadow: (
+    nav: 0 0.55em $color-shadow,
+    card: 0.25em 0.55em 5px 2px $color-shadow,
+);
