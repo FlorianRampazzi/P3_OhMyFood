@@ -1,0 +1,17 @@
+.sticky {
+    position: sticky;
+    top: 0;
+    background-color: $color-white;
+    box-shadow: map-get($shadow, nav);
+    z-index: 10;
+}
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 0.75rem 0;
+    &__logo {
+        height: 3.5vw;
+        min-height: 2.5rem;
+    }
+}
