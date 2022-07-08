@@ -81,6 +81,9 @@ footer i, footer a {
   padding-right: 1rem;
   color: #ffffff;
 }
+footer i:hover, footer a:hover {
+  text-decoration: underline;
+}
 
 .btn__content {
   display: inline-block;
@@ -142,11 +145,10 @@ footer i, footer a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 0.5rem;
   gap: 2rem;
 }
 #functioning .functioning__step {
-  width: 100%;
+  position: relative;
   height: 8rem;
   margin-left: 1rem;
   background-color: #f6f6f6;
@@ -155,26 +157,25 @@ footer i, footer a {
   align-items: center;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.15);
 }
-#functioning .functioning__step h3 {
-  vertical-align: middle;
-}
 #functioning .functioning__step h3 .number {
-  display: inline-block;
+  position: absolute;
   height: 2.5rem;
   width: 2.5rem;
-  padding: 0.5rem;
+  padding: 0.45rem;
   text-align: center;
   border-radius: 60%;
   background-color: #9356DC;
   color: #ffffff;
   font-weight: 300;
   font-size: 1.4rem;
-  transform: translateX(-1.3rem);
+  transform: translateY(-50%);
+  top: 50%;
+  left: -1rem;
 }
 #functioning .functioning__step h3 i {
   vertical-align: middle;
   color: #7e7e7e;
-  margin: 0 2rem 0 0.8rem;
+  margin: 0 2rem 0 3.5rem;
 }
 
 #restaurants {
@@ -190,13 +191,14 @@ footer i, footer a {
 #restaurants .restaurants__card {
   overflow: hidden;
   width: 100%;
+  height: 25rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
 }
 #restaurants .restaurants__card__img {
   position: relative;
   height: 70%;
-  max-height: 17rem;
   overflow: hidden;
 }
 #restaurants .restaurants__card__img span {
@@ -212,10 +214,15 @@ footer i, footer a {
 }
 #restaurants .restaurants__card__img img {
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+#restaurants .restaurants__card__img .op-custom {
+  -o-object-position: center 60%;
+     object-position: center 60%;
 }
 #restaurants .restaurants__card__caption {
   display: flex;
@@ -230,15 +237,25 @@ footer i, footer a {
   line-height: 1.5;
 }
 #restaurants .restaurants__card__caption__like {
+  width: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
-#restaurants .restaurants__card__caption__like .heart-full {
-  color: linear-gradient(355deg, #FF79DA 0%, #9356DC 100%);
-  opacity: 0;
-  z-index: 2;
+#restaurants .restaurants__card__caption__like input {
+  display: none;
 }
-#restaurants .restaurants__card__caption__like:active {
-  opacity: 1;
+#restaurants .restaurants__card__caption__like input:checked + .heart-full::before {
+  background: -webkit-gradient(linear, left bottom, right top, from(#FF79DA), to(#9356DC));
+  -webkit-background-clip: text;
+  -webkit-text-stroke-width: 0.15rem;
+  -webkit-text-stroke-color: transparent;
+}
+#restaurants .restaurants__card__caption__like .heart-full::before {
+  background: transparent;
+  -webkit-text-stroke-width: 0.15rem;
+  -webkit-text-stroke-color: #000000;
+  -webkit-text-fill-color: transparent;
 }/*# sourceMappingURL=main.css.map */

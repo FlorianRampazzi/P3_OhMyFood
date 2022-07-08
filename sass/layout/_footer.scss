@@ -11,5 +11,8 @@ footer {
     & i, a {
         padding-right: 1rem;
         color: $color-white;
+        &:hover{
+            text-decoration: underline;
+        }
     }
 }
