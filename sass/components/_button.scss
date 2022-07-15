@@ -1,0 +1,48 @@
+.btn {
+    text-align: center;
+    &__content {
+    display: inline-block;
+    border-radius: 3rem;
+    background: $gradient;
+    background-size: 105%;
+    text-align: center;
+    box-shadow: map-get($shadow, btn);
+    padding: 1.5rem 2.5rem;
+
+    color: $color-white;
+    letter-spacing: 0.05rem;
+    
+    transition: all .2s ease-out;
+        &:hover {
+            background-position: left;
+        }
+        &:active {
+            transform:translatey(2px);
+            box-shadow: none;
+        }
+    }
+}
+.btn__like {
+    width: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    & input {
+        display: none;
+        &:checked + .heart-full::before {
+            background: -webkit-gradient(linear, left bottom, right top, from($color-secondary), to($color-primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-stroke-width: 0.15rem;
+            -webkit-text-stroke-color: transparent;
+        }  
+    }
+    & .heart-full::before {
+        background: transparent;
+        -webkit-text-stroke-width: 0.15rem;
+        -webkit-text-stroke-color: #000000;
+        -webkit-text-fill-color: transparent;
+    }
+} 
