@@ -1,3 +1,43 @@
+#loadingPage {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color-white, 0.95);
+    z-index: 99999;
+
+    animation: loaderEnd 0.15s ease-out 3s both;
+}
+#logoLoader {
+    margin-bottom: 7rem;
+    animation: logoAppear 0.5s 0.8s both ease-in-out;
+}
+#loader {
+    position: relative;
+    left: calc($circle-size * -5);
+}
+#loader {
+    &::before, &::after {
+        content: " ";
+        width: $circle-size;
+        height: $circle-size;
+        border-radius: 50%;
+        position: absolute;
+        animation: swingCircles $animation-duration ease-in-out 10 both;
+        mix-blend-mode: darken;
+        z-index: 100000;
+    }
+    &::before {
+        background: $color-secondary;
+    }
+    &::after {
+        background: $color-primary;
+        animation-delay: calc($animation-duration / -2);
+    }
+}
+
 @keyframes logoAppear {
     0% {
         opacity: 0;

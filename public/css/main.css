@@ -104,6 +104,7 @@ footer i:hover, footer a:hover {
   z-index: 1;
   color: #ffffff;
   font-size: 1.6rem;
+  font-weight: 500;
   letter-spacing: 0.05rem;
   transition: all 0.2s ease-out;
 }
@@ -378,6 +379,50 @@ main {
           animation-delay: calc(8s / 5);
 }
 
+#loadingPage {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.95);
+  z-index: 99999;
+  -webkit-animation: loaderEnd 0.15s ease-out 3s both;
+          animation: loaderEnd 0.15s ease-out 3s both;
+}
+
+#logoLoader {
+  margin-bottom: 7rem;
+  -webkit-animation: logoAppear 0.5s 0.8s both ease-in-out;
+          animation: logoAppear 0.5s 0.8s both ease-in-out;
+}
+
+#loader {
+  position: relative;
+  left: -12.5rem;
+}
+
+#loader::before, #loader::after {
+  content: " ";
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-animation: swingCircles 1s ease-in-out 10 both;
+          animation: swingCircles 1s ease-in-out 10 both;
+  mix-blend-mode: darken;
+  z-index: 100000;
+}
+#loader::before {
+  background: #FF79DA;
+}
+#loader::after {
+  background: #9356DC;
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+
 @-webkit-keyframes logoAppear {
   0% {
     opacity: 0;
@@ -451,50 +496,6 @@ main {
     z-index: -10;
   }
 }
-#loadingPage {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.95);
-  z-index: 99999;
-  -webkit-animation: loaderEnd 0.15s ease-out 3s both;
-          animation: loaderEnd 0.15s ease-out 3s both;
-}
-
-#logoLoader {
-  margin-bottom: 7rem;
-  -webkit-animation: logoAppear 0.5s 0.8s both ease-in-out;
-          animation: logoAppear 0.5s 0.8s both ease-in-out;
-}
-
-#loader {
-  position: relative;
-  left: -12.5rem;
-}
-
-#loader::before, #loader::after {
-  content: " ";
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  position: absolute;
-  -webkit-animation: swingCircles 1s ease-in-out 10 both;
-          animation: swingCircles 1s ease-in-out 10 both;
-  mix-blend-mode: darken;
-  z-index: 100000;
-}
-#loader::before {
-  background: #FF79DA;
-}
-#loader::after {
-  background: #9356DC;
-  -webkit-animation-delay: -0.5s;
-          animation-delay: -0.5s;
-}
-
 .banner {
   text-align: center;
 }
