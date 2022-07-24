@@ -1,55 +1,16 @@
-//FONTS
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
-//INIT
-* {
-    box-sizing: border-box; /* Opera/IE 8+ */
-    -moz-box-sizing: border-box; /* Firefox, autres Gecko */
-    -webkit-box-sizing: border-box; /* Safari/Chrome, autres WebKit */
-    list-style: none;
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    color: #000000;
-}
-html {
-    scroll-behavior: smooth;
-    //Initialisation des 16px par défaut en 10px(62.5%) pour l'accessibilité.
-    font-size: 62.5%;
-}
-main {
-    margin: auto;
-}
-
-//FONT STYLES
-h1 {
-    font-size: 2.4rem;
-}
-h2 {
-    font-size: 2.4rem;
-    font-weight: 800;
-    margin-bottom: 2.5rem;
-}
-h3 {
-    font-size: 1.8rem;
-}
-p, a {
-    font-size: 1.6rem;
-}
-span {
-    font-size: 1.2rem;
-}
 
 //SASS FILES
+@import "./base/init";
 @import "./utils/variables";
 @import "./utils/mixins";
 @import "./utils/functions";
 @import "./utils/extensions";
 @import "./layout/header";
 @import "./layout/footer";
-@import "./layout/button";
+@import "./components/button";
+@import "./pages/menu";
+
 
 .banner {
     text-align: center;
@@ -70,7 +31,7 @@ span {
         background-color: $color-lightgrey;
         padding: 5rem 2rem;
         &__text{
-            letter-spacing: 1.05;
+            margin-bottom: 2.5rem;
             & h1 {
                 font-weight: 800;
                 padding-bottom: 1rem;
@@ -84,26 +45,37 @@ span {
 #functioning {
     background-color: $color-white;
     padding: 5rem 2rem;
+    & h2 {
+        margin-bottom: 2.5rem;
+    }  
     .functioning {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
         justify-content: center;
         gap: 2rem;
         &__step {
             position: relative;
-            height: 8rem ;
+            width: 100%;
+            height: 8rem;
+            max-width: 40rem;
             margin-left: 1rem;
             background-color: $color-lightgrey;
             border-radius: 2rem;
             display: flex;
             align-items: center;
             box-shadow: map-get($shadow, card);
+            z-index: 1;
             & h3 {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 & .number {
                     position: absolute;
                     height: 2.5rem;
                     width: 2.5rem;
-                    padding: 0.45rem;
+                    padding: 0.4rem;
                     text-align: center;
                     border-radius: 60%;
                     background-color: $color-primary;
@@ -112,12 +84,34 @@ span {
                     font-size: 1.4rem;
                     transform: translateY(-50%);
                     top: 50%;
-                    left: -1rem;
+                    left: -1.5rem;
                 }
                 & i {
                     vertical-align: middle;
                     color: $color-darkgrey;
                     margin: 0 2rem 0 3.5rem;
+                    opacity: 1;
+                }
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                border-radius: 2rem;
+                background-color: lighten($color-primary, 35%);
+                opacity: 0;
+                z-index: -1;
+
+            }
+            &:hover {
+                &::after {
+                    opacity: 1;
+                }
+                & i {
+                    color: $color-primary;
                 }
             }
         }
@@ -126,11 +120,27 @@ span {
 #restaurants {
     background-color: $color-lightgrey;
     padding: 5rem 2rem;
-    .restaurants {
+    & h2 {
+        margin-bottom: 2.5rem;
+    }  
+    & .restaurants {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
-        gap: 2rem;
+        margin: 0 auto;
+        width: auto;
+        gap: 2.5rem;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+            justify-content: center;
+        }
+        @media screen and (min-width: 1146px) {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
         &__card {
             overflow: hidden;
             width: 100%;
@@ -138,6 +148,13 @@ span {
             border-radius: 1.5rem;
             box-shadow: map-get($shadow, card);
             background-color: $color-white;
+
+            @media screen and (min-width: 768px) {
+                width: 45%;
+            }
+            @media screen and (min-width: 1146px) {
+                width: 35rem;
+            }
             &__img { 
                 position: relative;
                 height: 70%;
@@ -152,16 +169,25 @@ span {
                     font-weight: 600;
                     right: 1rem;
                     top: 1rem;
+                    z-index: 2;
                 }
                 & img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                     object-position: center;
+                    transform: scale(1);
+                    transition: transform 0.3s ease;
                 }
-                & .op-custom {
+                & .objp-custom {
                     object-position: center 60%;
                 }
+            }
+            &:hover {
+                & img {
+                    transform: scale(1.05);
+                }
+                
             }
             &__caption {
                 display: flex;
@@ -174,29 +200,6 @@ span {
                     font-weight: 800;
                     line-height: 1.5;   
                 }
-                &__like {
-                    width: 4rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    text-align: center;
-                    cursor: pointer;
-                    & input {
-                        display: none;
-                        &:checked + .heart-full::before {
-                            background: -webkit-gradient(linear, left bottom, right top, from($color-secondary), to($color-primary));
-                            -webkit-background-clip: text;
-                            -webkit-text-stroke-width: 0.15rem;
-                            -webkit-text-stroke-color: transparent;
-                        }  
-                    }
-                    & .heart-full::before {
-                        background: transparent;
-                        -webkit-text-stroke-width: 0.15rem;
-                        -webkit-text-stroke-color: #000000;
-                        -webkit-text-fill-color: transparent;
-                    }
-                } 
             }
         }
     }

@@ -1,0 +1,162 @@
+.heroImage {
+    
+    & img{
+        height: 25vw;
+        min-height: 20rem;
+        max-height: 30rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: center 60%;
+    }
+}
+main {
+    background-color: $color-lightgrey;
+}
+.menu {
+    background-color: $color-lightgrey;
+    border-radius: 3rem 3em 0 0;
+    padding: 3rem 2rem;
+    transform: translateY(-2.5rem);
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2.5rem;
+        & h1 {
+            font-family: 'Shrikhand', serif;
+            font-size: 3rem;
+            padding-right: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+
+.submenu {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__content {
+        margin-bottom: 5rem;
+
+        @media screen and (min-width: 992px) {
+            width: 30%;
+        max-width: 500px;
+        }
+        &__title {
+            width: 100%;
+        }
+        &:not(.menu__content__title) {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: flex-start; 
+            gap: 1.5rem;
+        }
+        & h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+        & hr {
+            background-color:  $color-tertiary;
+            border: none;
+            width: 4rem;
+            height: 0.3rem;
+            margin-top: 0.5rem;
+        }
+        &__card {
+            max-width: 100%;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            background-color: $color-white;
+            box-shadow: map-get($shadow, card);
+            overflow: hidden;
+            border-radius: 1.5rem ;
+            cursor: pointer;
+
+            //card-reveal animation slide in form opacity 0
+            animation: cardAppear 0.6s 1s both cubic-bezier(.4,.39,.56,1);
+            &__text {
+                flex: 1;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                transform-origin: left;
+                & h3, p {
+                    margin: 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+            &__price {
+                padding: 0 1rem;
+                width: 5rem;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                font-weight: 700;
+                font-size: 1.6rem;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
+            }
+            &__check {
+                margin: -2rem -8.5rem -2rem 0 ;
+                width: 7rem;
+                background-color: $color-tertiary;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
+                & i {
+                    color: $color-white;
+                    font-size: 2.5rem;
+                    transform: rotate(1turn);
+                    transition: transform 0.4s 0.2s ease-out ;
+                }
+            }
+            &:hover {
+                & .submenu__content__card__check {
+                    transform: translateX(-7rem);
+                    & i {
+                        transform: rotate(0turn); 
+                    }
+                }
+                & .submenu__content__card__price {
+                    transform: translateX(-7rem);
+                    padding-left: 11rem;
+                }
+            }
+        }         
+    }
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    25% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@for $i from 0 to 9 {
+    .delay--#{$i} {
+      animation-delay: calc(#{$i}s / 5);
+    }
+}
