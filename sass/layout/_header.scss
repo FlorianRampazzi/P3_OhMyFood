@@ -14,10 +14,11 @@
     &__logo {
         height: 3.5vw;
         min-height: 2.5rem;
+        max-height: 4rem;
     }
 }
 
 .backArrow {
     position: absolute;
-    left:3rem;
+    left: 3rem;
 }

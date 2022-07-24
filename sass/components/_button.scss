@@ -1,48 +1,79 @@
 .btn {
     text-align: center;
-    &__content {
-    display: inline-block;
-    border-radius: 3rem;
-    background: $gradient;
-    background-size: 105%;
-    text-align: center;
-    box-shadow: map-get($shadow, btn);
-    padding: 1.5rem 2.5rem;
 
-    color: $color-white;
-    letter-spacing: 0.05rem;
-    
-    transition: all .2s ease-out;
+    &__content {
+        display: inline-block;
+        position: relative;
+        border-radius: 3rem;
+        background: $gradient;
+        background-size: 105%;
+        text-align: center;
+        box-shadow: map-get($shadow, btn);
+        padding: 1.5rem 3.5rem;
+        z-index: 1;
+
+        color: $color-white;
+        letter-spacing: 0.05rem;
+        
+        transition: all .2s ease-out;
         &:hover {
-            background-position: left;
+            box-shadow: map-get($shadow, btn_darker);
+            &::after {
+                opacity: 1;
+                }  
         }
-        &:active {
-            transform:translatey(2px);
-            box-shadow: none;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border-radius: 3rem;
+            background:$gradient-lighten;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 250ms;
         }
     }
 }
-.btn__like {
+.like {
     width: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     text-align: center;
     cursor: pointer;
-    & input {
-        display: none;
-        &:checked + .heart-full::before {
+    & .heart-stroke {
+        font-size: 2.5rem;        
+        opacity: 1;
+        line-height: 0;
+        &::before {
+            background: transparent;
+            z-index: -1;
+        }
+    }
+    & .heart-full {
+        font-size: 2.5rem;
+        opacity: 0;
+        
+        transform: scale(0);
+        transform-origin: top;
+        transition: transform 0.3s ease-out;
+        &::before {
             background: -webkit-gradient(linear, left bottom, right top, from($color-secondary), to($color-primary));
             background-clip: text;
             -webkit-background-clip: text;
-            -webkit-text-stroke-width: 0.15rem;
-            -webkit-text-stroke-color: transparent;
-        }  
+            -webkit-text-fill-color: transparent;
+            
+            z-index: 1;
+        }
     }
-    & .heart-full::before {
-        background: transparent;
-        -webkit-text-stroke-width: 0.15rem;
-        -webkit-text-stroke-color: #000000;
-        -webkit-text-fill-color: transparent;
+    &:hover, &:focus {
+        & .heart-full {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
-} 
+}

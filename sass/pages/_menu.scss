@@ -1,12 +1,13 @@
-.parallax {
-    height: 25rem;
-    width: 100vw;
-    background-image: url(/public/img/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    background-clip: border-box;
+.heroImage {
+    
+    & img{
+        height: 25vw;
+        min-height: 20rem;
+        max-height: 30rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: center 60%;
+    }
 }
 main {
     background-color: $color-lightgrey;
@@ -23,14 +24,39 @@ main {
         & h1 {
             font-family: 'Shrikhand', serif;
             font-size: 3rem;
+            padding-right: 1rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
+}
+
+
+.submenu {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     &__content {
         margin-bottom: 5rem;
+
+        @media screen and (min-width: 992px) {
+            width: 30%;
+        max-width: 500px;
+        }
+        &__title {
+            width: 100%;
+        }
         &:not(.menu__content__title) {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            flex-wrap: wrap;
+            justify-content: flex-start; 
             gap: 1.5rem;
         }
         & h2 {
@@ -46,98 +72,91 @@ main {
             margin-top: 0.5rem;
         }
         &__card {
-            height: 7rem;
-            width: 100%;
-            max-width: 350px;
+            max-width: 100%;
+            padding: 1.5rem;
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            flex-wrap: nowrap;
+            justify-content: space-between;
             background-color: $color-white;
             box-shadow: map-get($shadow, card);
             overflow: hidden;
             border-radius: 1.5rem ;
             cursor: pointer;
+
+            //card-reveal animation slide in form opacity 0
+            animation: cardAppear 0.6s 1s both cubic-bezier(.4,.39,.56,1);
             &__text {
-                flex: 2 2;
-                width: 100%;
-                max-width: 28rem;
+                flex: 1;
                 overflow: hidden;
-                text-align: left;
                 white-space: nowrap;
-                text-overflow: clip ellipsis;
-                padding: 1.5rem;
+                text-overflow: ellipsis;
+                transform-origin: left;
+                & h3, p {
+                    margin: 0;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
             }
-            & span {
-                flex: 1 1;
-                max-width: 6rem;
-                height: 100%;
-                width: 100%;
-                padding: 4rem 1rem 1.5rem 1rem;
-                display: block;
-                background-color: $color-white;
-                text-align: center;
-                font-weight: 800;
+            &__price {
+                padding: 0 1rem;
+                width: 5rem;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                font-weight: 700;
                 font-size: 1.6rem;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
             }
             &__check {
-                flex: 1;
-                width: 100%;
-                max-width: 7rem;
+                margin: -2rem -8.5rem -2rem 0 ;
+                width: 7rem;
                 background-color: $color-tertiary;
-                margin-right: -300px;
                 text-align: center;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                & .checkIcon::before {
-                    color: $color-white;
-                }
-            }
-            &:hover .menu__content__card__check{
-                margin-right: 0;
-                transition: all 0.4s ease-in-out;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
                 & i {
-                    transform: rotate(1);
+                    color: $color-white;
+                    font-size: 2.5rem;
+                    transform: rotate(1turn);
+                    transition: transform 0.4s 0.2s ease-out ;
                 }
             }
-
-                            // &__text {
-                //     width: 100%;
-                //     overflow: hidden;
-                //     text-align: left;
-                //     white-space: nowrap;
-                //     text-overflow: ellipsis;
-                //     padding: 1.5rem;
-                // }
-                // & span {
-                //     width: 7rem;
-                //     padding: 4rem 1rem 1.5rem 1rem;
-                //     display: block;
-                //     background-color: $color-white;
-                //     text-align: center;
-                //     font-weight: 800;
-                //     font-size: 1.6rem;
-                // }
-                // &__check {
-                //     width: 7rem;
-                //     background-color: $color-tertiary;
-                //     text-align: center;
-                //     display: flex;
-                //     align-items: center;
-                //     justify-content: center;
-                //     transform:  translateX(7rem);
-                //     & .checkIcon::before {
-                //         color: $color-white;
-                //     }
-                // }
-                // &:hover > .menu__content__card__check{
-                //     transform:  translateX(0);
-                //     & i {
-                //         transform: rotate(1);
-                //     }
-                
+            &:hover {
+                & .submenu__content__card__check {
+                    transform: translateX(-7rem);
+                    & i {
+                        transform: rotate(0turn); 
+                    }
+                }
+                & .submenu__content__card__price {
+                    transform: translateX(-7rem);
+                    padding-left: 11rem;
+                }
+            }
         }         
+    }
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    25% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@for $i from 0 to 9 {
+    .delay--#{$i} {
+      animation-delay: calc(#{$i}s / 5);
     }
 }
