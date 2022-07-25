@@ -1,14 +1,14 @@
 //SASS FILES
-@import "base/init";
-@import "utils/variables";
-@import "utils/mixins";
-@import "utils/functions";
-@import "utils/extensions";
-@import "layout/header";
-@import "layout/footer";
-@import "components/button";
-@import "pages/menu";
-@import "components/loader";
+@import "../sass/base/init";
+@import "../sass/utils/variables";
+@import "../sass/utils/mixins";
+@import "../sass/utils/functions";
+@import "../sass/utils/extensions";
+@import "../sass/layout/header";
+@import "../sass/layout/footer";
+@import "../sass/components/button";
+@import "../sass/pages/menu";
+@import "../sass/components/loader";
 
 .banner {
     text-align: center;
