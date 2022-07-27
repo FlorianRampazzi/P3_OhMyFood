@@ -1,0 +1,128 @@
+.heroImage {
+    & img{
+        @include size(100%, 25vw);
+        min-height: 20rem;
+        max-height: 30rem;
+        object-fit: cover;
+        object-position: center 60%;
+    }
+}
+main {
+    background-color: $color-lightgrey;
+}
+.menu {
+    background-color: $color-lightgrey;
+    border-radius: 3rem 3em 0 0;
+    @include padding($xl, $md, $xl, $md);
+    transform: translateY(-2.5rem);
+    &__title {
+        @include displayFlex(row, wrap, space-between, none, 0);
+        margin-bottom: $lg;
+        & h1 {
+            font-family: 'Shrikhand', serif;
+            font-size: $xl;
+            padding-right: $xs;
+            letter-spacing: 0.1rem;
+            @include text-overflow;
+        }
+    }
+}
+
+
+.submenu {
+    @include displayFlex(column, nowrap, unset, unset, 0);
+
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    &__content {
+        margin-bottom: $xxxl;
+
+        @media screen and (min-width: 992px) {
+            @include size(30%, auto);
+            max-width: 50rem;
+        }
+        &__title {
+            width: 100%;
+        }
+        &:not(.menu__content__title) {
+            @include displayFlex(column, wrap, flex-start, unset, $sm);
+        }
+        & h2 {
+            font-size: 1.6rem;
+            font-weight: $regular;
+            text-transform: uppercase;
+        }
+        & hr {
+            @include size(4rem, 0.3rem);
+            background-color: $color-tertiary;
+            border: none;
+            margin-top: $xxs;
+        }
+        &__card {
+            @include displayFlex(row, wrap, space-between, unset, 0);
+            max-width: 100%;
+            padding: $sm;
+            background-color: $color-white;
+            box-shadow: map-get($shadow, card);
+            overflow: hidden;
+            border-radius: $sm;
+            cursor: pointer;
+
+            //card-reveal animation slide in form opacity 0
+            animation: cardAppear 0.6s 1s both cubic-bezier(.4,.39,.56,1);
+            &__text {
+                @include text-overflow;
+                flex: 1;
+                & h3, p {
+                    @include text-overflow;
+                    margin: 0;
+                }
+            }
+            &__price {
+                @include size($xxxl, auto);
+                @include displayFlex(row, wrap, flex-end, flex-end, 0);
+                @include padding (0, $xs, 0, $xs);
+                font-weight: $bold;
+                font-size: 1.6rem;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
+            }
+            &__check {
+                margin: -2rem -8.5rem -2rem 0 ;
+                @include size(7rem, auto);
+                @include displayFlex(row, wrap, center, center, 0);
+                background-color: $color-tertiary;
+                text-align: center;
+                transform: translateX(0);
+                transition: all 0.5s ease-in-out;
+                & i {
+                    color: $color-white;
+                    font-size: $lg;
+                    transform: rotate(1turn);
+                    transition: transform 0.4s 0.2s ease-out ;
+                }
+            }
+            &:hover {
+                & .submenu__content__card__check {
+                    transform: translateX(-7rem);
+                    & i {
+                        transform: rotate(0turn); 
+                    }
+                }
+                & .submenu__content__card__price {
+                    transform: translateX(-7rem);
+                    padding-left: 11rem;
+                }
+            }
+        }         
+    }
+}
+
+@for $i from 0 to 9 {
+    .delay--#{$i} {
+        animation-delay: calc(#{$i}s / 5);
+    }
+ }

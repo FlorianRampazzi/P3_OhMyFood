@@ -1,0 +1,52 @@
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    25% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(5rem);
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0rem);
+        transform: scale(1);
+    }
+}
+
+@keyframes swingCircles {
+    0% {
+        left: 0;
+    }
+    25% {
+        transform: scale(calc(1 + $circle-scale));
+        opacity: 0.80;
+    }
+    50% {
+        left: $circle-size;
+    }
+    75% {
+        transform: scale(calc(1 - $circle-scale));
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes loaderEnd {
+    100% {
+      opacity: 0;
+      z-index: -10;
+    }
+  } 
