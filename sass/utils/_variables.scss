@@ -15,7 +15,10 @@ $gradient-reversed: linear-gradient(355deg, $color-secondary 0%, $color-primary 
 $gradient-lighten: linear-gradient(355deg, lighten($color-primary, 10%) 0%, lighten($color-secondary, 10%) 100%);
 $gradient-darken: linear-gradient(355deg, darken($color-primary,5%) 0%, darken($color-secondary,5%) 100%);
 
-//SIZE
+//FONT-WEIGHT
+$regular: 400;
+$medium: 600;
+$bold: 800;
 
 
 //MAPS
@@ -25,6 +28,17 @@ $shadow: (
     btn: 0 0.5rem 1rem 0 $color-shadow,
     btn_darker: 0 0.35rem 0.8rem 0 $color-shadow-darker,
 );
+
+
+$xxs: 0.5rem;
+$xs: 1rem;
+$sm: 1.5rem;
+$md: 2rem;
+$lg: 2.5rem;
+$xl: 3rem;
+$xxl: 3.5rem;
+$xxxl: 5rem;
+
 
 
 //ANIMATION

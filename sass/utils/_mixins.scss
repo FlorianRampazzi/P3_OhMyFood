@@ -3,6 +3,30 @@
     box-shadow: 0 0 5px 0 ;
 }
 
-@mixin card-shadow {
-    box-shadow: 0 0 5px 0 ;
+@mixin padding ($t, $r, $b, $l) {
+    padding: $t $r $b $l;
+}
+
+@mixin margin ($t, $r, $b, $l) {
+    padding: $t $r $b $l;
+}
+
+@mixin displayFlex ($flexDir, $wrap, $justify, $align, $gap) {
+    display: flex;
+    flex-direction: $flexDir;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+    gap : $gap;
+}
+
+@mixin size ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
