@@ -16,7 +16,7 @@ main {
     @include padding($xl, $md, $xl, $md);
     transform: translateY(-2.5rem);
     &__title {
-        @include displayFlex(row, wrap, space-between, none, 0);
+        @include displayFlex(row, wrap, space-between, unset, 0);
         margin-bottom: $lg;
         & h1 {
             font-family: 'Shrikhand', serif;

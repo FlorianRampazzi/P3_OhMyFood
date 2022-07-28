@@ -64,7 +64,7 @@
         transform-origin: top;
         transition: transform 0.3s ease-out;
         &::before {
-            background: -webkit-gradient(linear, left bottom, right top, from($color-secondary), to($color-primary));
+            background: gradient(linear, left bottom, right top, from($color-secondary), to($color-primary));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
