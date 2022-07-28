@@ -171,7 +171,7 @@
                 @include displayFlex (row, nowrap, space-between, unset, 0);
                 padding: $sm;
                 @include size(auto, 30%);
-                min-height: $xlnon;
+                min-height: $xl;
                 &__text {
                     @include text-overflow;
                     flex: 1;
