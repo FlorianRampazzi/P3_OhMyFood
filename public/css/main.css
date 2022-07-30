@@ -153,7 +153,7 @@ footer i:hover, footer a:hover {
   transition: transform 0.3s ease-out;
 }
 .like .heart-full::before {
-  background: gradient(linear, left bottom, right top, from(#FF79DA), to(#9356DC));
+  background: -webkit-gradient(linear, left bottom, right top, from(#FF79DA), to(#9356DC));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
